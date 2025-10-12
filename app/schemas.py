@@ -3,12 +3,13 @@ from datetime import datetime
 from typing import Optional
 import uuid
 
-class PostBase(BaseModel):
+class DetectBase(BaseModel):
     title: str
+    path_original: str
     path: str
     published: bool = True
 
-class  PostCreate(PostBase):
+class  DetectCreate(DetectBase):
     id: int      # unique integer id
     created_at: datetime
     pass
@@ -22,22 +23,21 @@ class UserOut(BaseModel):
     class Config:
         from_attributes=True 
         
-class Post(PostBase):
+class Detect(DetectBase):
     created_at:datetime
     class Config:
         from_attributes=True   
  
-class PostOut(BaseModel):
-    post:Post
+class DetectOut(BaseModel):
+    post:Detect
     class Config:
         from_attributes=True 
+
+
 
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
-
-
-
 class UserLogin(BaseModel):
     email: EmailStr
     password: str   

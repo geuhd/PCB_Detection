@@ -354,20 +354,11 @@
         "documentation": {}
     },
     {
-        "label": "Post",
-        "kind": 6,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "class Post(BaseModel):\n    title: str\n    path: str\n    published: bool = True\n    id: int\n    created_at: datetime\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.PostCreate)",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
         "label": "root",
         "kind": 2,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.PostCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()",
+        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()",
         "detail": "app.main",
         "documentation": {}
     },
@@ -376,7 +367,7 @@
         "kind": 2,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "def delete_post(id: int):\n    print(\"delete\")\n    return {\"message\": \"deleted\"}",
+        "peekOfCode": "def delete_post(id: int,\n                db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    post_query.delete(synchronize_session=False)\n    db.commit()\n    return Response(status_code=status.HTTP_204_NO_CONTENT)",
         "detail": "app.main",
         "documentation": {}
     },
@@ -385,7 +376,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "IMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\napp = FastAPI()\nposts =[]\nclass Post(BaseModel):\n    title: str\n    path: str\n    published: bool = True\n    id: int\n    created_at: datetime",
+        "peekOfCode": "IMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\napp = FastAPI()\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),",
         "detail": "app.main",
         "documentation": {}
     },
@@ -394,7 +385,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "IMAGEDIR_PROC = \"images_processed/\"\napp = FastAPI()\nposts =[]\nclass Post(BaseModel):\n    title: str\n    path: str\n    published: bool = True\n    id: int\n    created_at: datetime\n@app.get(\"/\")",
+        "peekOfCode": "IMAGEDIR_PROC = \"images_processed/\"\napp = FastAPI()\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):",
         "detail": "app.main",
         "documentation": {}
     },
@@ -403,7 +394,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI()\nposts =[]\nclass Post(BaseModel):\n    title: str\n    path: str\n    published: bool = True\n    id: int\n    created_at: datetime\n@app.get(\"/\")\ndef root():",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)",
         "detail": "app.main",
         "documentation": {}
     },
@@ -412,7 +403,7 @@
         "kind": 6,
         "importPath": "app.models",
         "description": "app.models",
-        "peekOfCode": "class Post(Base):\n    __tablename__ = \"pcbimg\"\n    id = Column(Integer, primary_key=True, nullable= False)\n    title= Column(String,nullable=False)\n    path = Column(String,nullable=False)\n    published =Column(Boolean,server_default='True',nullable=False)\n    created_at = Column(TIMESTAMP(timezone= True),nullable=False,server_default=text('now()'))\nclass User(Base):\n    __tablename__ =\"users\"\n    id = Column(Integer, primary_key=True, nullable= False)",
+        "peekOfCode": "class Post(Base):\n    __tablename__ = \"pcbimg\"\n    id = Column(Integer, primary_key=True, nullable= False)\n    title= Column(String,nullable=False)\n    path_original = Column(String,nullable=False)\n    path = Column(String,nullable=False)\n    published =Column(Boolean,server_default='True',nullable=False)\n    created_at = Column(TIMESTAMP(timezone= True),nullable=False,server_default=text('now()'))\nclass User(Base):\n    __tablename__ =\"users\"",
         "detail": "app.models",
         "documentation": {}
     },
@@ -426,11 +417,11 @@
         "documentation": {}
     },
     {
-        "label": "PostBase",
+        "label": "DetectBase",
         "kind": 6,
         "importPath": "app.schemas",
         "description": "app.schemas",
-        "peekOfCode": "class PostBase(BaseModel):\n    title: str\n    path: str\n    published: bool = True\nclass  PostCreate(PostBase):\n    id: int      # unique integer id\n    created_at: datetime\n    pass\nclass UserOut(BaseModel):\n    id: int",
+        "peekOfCode": "class DetectBase(BaseModel):\n    title: str\n    path_original: str\n    path: str\n    published: bool = True\nclass  DetectCreate(DetectBase):\n    id: int      # unique integer id\n    created_at: datetime\n    pass\nclass UserOut(BaseModel):",
         "detail": "app.schemas",
         "documentation": {}
     },
@@ -438,12 +429,12 @@
         "label": {
             "name": "",
             "kind": 6,
-            "peekOfCode": "class  PostCreate(PostBase):\n    id: int      # unique integer id\n    created_at: datetime\n    pass\nclass UserOut(BaseModel):\n    id: int\n    email:EmailStr\n    created_at:datetime\n    class Config:\n        from_attributes=True "
+            "peekOfCode": "class  DetectCreate(DetectBase):\n    id: int      # unique integer id\n    created_at: datetime\n    pass\nclass UserOut(BaseModel):\n    id: int\n    email:EmailStr\n    created_at:datetime\n    class Config:\n        from_attributes=True "
         },
         "kind": 6,
         "importPath": "app.schemas",
         "description": "app.schemas",
-        "peekOfCode": "class  PostCreate(PostBase):\n    id: int      # unique integer id\n    created_at: datetime\n    pass\nclass UserOut(BaseModel):\n    id: int\n    email:EmailStr\n    created_at:datetime\n    class Config:\n        from_attributes=True ",
+        "peekOfCode": "class  DetectCreate(DetectBase):\n    id: int      # unique integer id\n    created_at: datetime\n    pass\nclass UserOut(BaseModel):\n    id: int\n    email:EmailStr\n    created_at:datetime\n    class Config:\n        from_attributes=True ",
         "detail": "app.schemas",
         "documentation": {}
     },
@@ -452,25 +443,25 @@
         "kind": 6,
         "importPath": "app.schemas",
         "description": "app.schemas",
-        "peekOfCode": "class UserOut(BaseModel):\n    id: int\n    email:EmailStr\n    created_at:datetime\n    class Config:\n        from_attributes=True \nclass Post(PostBase):\n    created_at:datetime\n    class Config:\n        from_attributes=True   ",
+        "peekOfCode": "class UserOut(BaseModel):\n    id: int\n    email:EmailStr\n    created_at:datetime\n    class Config:\n        from_attributes=True \nclass Detect(DetectBase):\n    created_at:datetime\n    class Config:\n        from_attributes=True   ",
         "detail": "app.schemas",
         "documentation": {}
     },
     {
-        "label": "Post",
+        "label": "Detect",
         "kind": 6,
         "importPath": "app.schemas",
         "description": "app.schemas",
-        "peekOfCode": "class Post(PostBase):\n    created_at:datetime\n    class Config:\n        from_attributes=True   \nclass PostOut(BaseModel):\n    post:Post\n    class Config:\n        from_attributes=True \nclass UserCreate(BaseModel):\n    email: EmailStr",
+        "peekOfCode": "class Detect(DetectBase):\n    created_at:datetime\n    class Config:\n        from_attributes=True   \nclass DetectOut(BaseModel):\n    post:Detect\n    class Config:\n        from_attributes=True \nclass UserCreate(BaseModel):\n    email: EmailStr",
         "detail": "app.schemas",
         "documentation": {}
     },
     {
-        "label": "PostOut",
+        "label": "DetectOut",
         "kind": 6,
         "importPath": "app.schemas",
         "description": "app.schemas",
-        "peekOfCode": "class PostOut(BaseModel):\n    post:Post\n    class Config:\n        from_attributes=True \nclass UserCreate(BaseModel):\n    email: EmailStr\n    password: str\nclass UserLogin(BaseModel):\n    email: EmailStr\n    password: str   ",
+        "peekOfCode": "class DetectOut(BaseModel):\n    post:Detect\n    class Config:\n        from_attributes=True \nclass UserCreate(BaseModel):\n    email: EmailStr\n    password: str\nclass UserLogin(BaseModel):\n    email: EmailStr\n    password: str   ",
         "detail": "app.schemas",
         "documentation": {}
     },
