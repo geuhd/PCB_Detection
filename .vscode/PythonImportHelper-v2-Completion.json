@@ -1,141 +1,82 @@
 [
     {
-        "label": "BaseSettings",
-        "importPath": "pydantic_settings",
-        "description": "pydantic_settings",
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "pydantic_settings",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "create_engine",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "func",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "Column",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "Response",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "Integer",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "String",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "Boolean",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "ForeignKey",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "declarative_base",
-        "importPath": "sqlalchemy.ext.declarative",
-        "description": "sqlalchemy.ext.declarative",
+        "label": "BackgroundTasks",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "sqlalchemy.ext.declarative",
-        "documentation": {}
-    },
-    {
-        "label": "sessionmaker",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "Session",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "relationship",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "psycopg2",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "psycopg2",
-        "description": "psycopg2",
-        "detail": "psycopg2",
-        "documentation": {}
-    },
-    {
-        "label": "RealDictCursor",
-        "importPath": "psycopg2.extras",
-        "description": "psycopg2.extras",
-        "isExtraImport": true,
-        "detail": "psycopg2.extras",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
-        "label": "urlparse",
-        "importPath": "urllib.parse",
-        "description": "urllib.parse",
-        "isExtraImport": true,
-        "detail": "urllib.parse",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
@@ -203,6 +144,78 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "randint",
+        "importPath": "random",
+        "description": "random",
+        "isExtraImport": true,
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "randint",
         "importPath": "random",
         "description": "random",
@@ -216,6 +229,40 @@
         "description": "fastapi.responses",
         "isExtraImport": true,
         "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "FileResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -244,11 +291,173 @@
         "documentation": {}
     },
     {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
         "isExtraImport": true,
-        "detail": "pydantic",
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "BaseSettings",
+        "importPath": "pydantic_settings",
+        "description": "pydantic_settings",
+        "isExtraImport": true,
+        "detail": "pydantic_settings",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "RealDictCursor",
+        "importPath": "psycopg2.extras",
+        "description": "psycopg2.extras",
+        "isExtraImport": true,
+        "detail": "psycopg2.extras",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "TIMESTAMP",
+        "importPath": "sqlalchemy.sql.sqltypes",
+        "description": "sqlalchemy.sql.sqltypes",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.sql.sqltypes",
+        "documentation": {}
+    },
+    {
+        "label": "text",
+        "importPath": "sqlalchemy.sql.expression",
+        "description": "sqlalchemy.sql.expression",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.sql.expression",
         "documentation": {}
     },
     {
@@ -276,27 +485,101 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
+        "label": "CryptContext",
+        "importPath": "passlib.context",
+        "description": "passlib.context",
         "isExtraImport": true,
-        "detail": "datetime",
+        "detail": "passlib.context",
         "documentation": {}
     },
     {
-        "label": "TIMESTAMP",
-        "importPath": "sqlalchemy.sql.sqltypes",
-        "description": "sqlalchemy.sql.sqltypes",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.sql.sqltypes",
+        "label": "del_file",
+        "kind": 2,
+        "importPath": "app.routers.detections",
+        "description": "app.routers.detections",
+        "peekOfCode": "def del_file(path):\n    pathlib.Path(path).unlink(missing_ok=False)\n    print(\"file delected\")\nrouter = APIRouter(\n    prefix=\"/detections\",\n    tags=['Detections']\n)\nIMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)",
+        "detail": "app.routers.detections",
         "documentation": {}
     },
     {
-        "label": "text",
-        "importPath": "sqlalchemy.sql.expression",
-        "description": "sqlalchemy.sql.expression",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.sql.expression",
+        "label": "delete_post",
+        "kind": 2,
+        "importPath": "app.routers.detections",
+        "description": "app.routers.detections",
+        "peekOfCode": "def delete_post(id: int,\n                background_tasks: BackgroundTasks,\n                db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    path=post.path\n    print(path)",
+        "detail": "app.routers.detections",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.detections",
+        "description": "app.routers.detections",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/detections\",\n    tags=['Detections']\n)\nIMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),",
+        "detail": "app.routers.detections",
+        "documentation": {}
+    },
+    {
+        "label": "IMAGEDIR",
+        "kind": 5,
+        "importPath": "app.routers.detections",
+        "description": "app.routers.detections",
+        "peekOfCode": "IMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()",
+        "detail": "app.routers.detections",
+        "documentation": {}
+    },
+    {
+        "label": "IMAGEDIR_PROC",
+        "kind": 5,
+        "importPath": "app.routers.detections",
+        "description": "app.routers.detections",
+        "peekOfCode": "IMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()\n    #save file",
+        "detail": "app.routers.detections",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.restore",
+        "description": "app.routers.restore",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/restore\",\n    tags=['restore']\n)",
+        "detail": "app.routers.restore",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "def create_user(user: schemas.UserCreate,db:  Session= Depends(get_db)):\n    #hash the password in user.password\n    hashed_password= utils.hash(user.password)\n    user.password=hashed_password\n    new_user = models.User(**user.dict())\n    db.add(new_user)\n    db.commit()\n    db.refresh(new_user)\n    return new_user\n@router.get('/{id}', response_model = schemas.UserOut)",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "get_user",
+        "kind": 2,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "def get_user(id: int, db: Session=Depends(get_db)):\n    user= db.query(models.User).filter(models.User.id==id).first()\n    if not user:\n        raise HTTPException(status_code =status.HTTP_404_NOT_FOUND,\n                            detail=f\"User with id {id} does not exist\")\n    return user",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/users\",\n    tags=['Users']\n)\n@router.post(\"/\",status_code=status.HTTP_201_CREATED,response_model = schemas.UserOut)\ndef create_user(user: schemas.UserCreate,db:  Session= Depends(get_db)):\n    #hash the password in user.password\n    hashed_password= utils.hash(user.password)\n    user.password=hashed_password\n    new_user = models.User(**user.dict())",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "@router.post(\"/\",status_code=status.HTTP_201_CREATED,response_model",
+        "kind": 5,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "@router.post(\"/\",status_code=status.HTTP_201_CREATED,response_model = schemas.UserOut)\ndef create_user(user: schemas.UserCreate,db:  Session= Depends(get_db)):\n    #hash the password in user.password\n    hashed_password= utils.hash(user.password)\n    user.password=hashed_password\n    new_user = models.User(**user.dict())\n    db.add(new_user)\n    db.commit()\n    db.refresh(new_user)\n    return new_user",
+        "detail": "app.routers.users",
         "documentation": {}
     },
     {
@@ -358,34 +641,7 @@
         "kind": 2,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "delete_post",
-        "kind": 2,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "def delete_post(id: int,\n                db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    post_query.delete(synchronize_session=False)\n    db.commit()\n    return Response(status_code=status.HTTP_204_NO_CONTENT)",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "IMAGEDIR",
-        "kind": 5,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "IMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\napp = FastAPI()\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "IMAGEDIR_PROC",
-        "kind": 5,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "IMAGEDIR_PROC = \"images_processed/\"\napp = FastAPI()\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):",
+        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}",
         "detail": "app.main",
         "documentation": {}
     },
@@ -394,7 +650,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@app.post(\"/detections\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)",
+        "peekOfCode": "app = FastAPI()\napp.include_router(detections.router)\napp.include_router(users.router)\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}",
         "detail": "app.main",
         "documentation": {}
     },
@@ -499,6 +755,24 @@
         "description": "app.schemas",
         "peekOfCode": "class TokenData(BaseModel):\n    id: Optional[str]=None",
         "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "hash",
+        "kind": 2,
+        "importPath": "app.utils",
+        "description": "app.utils",
+        "peekOfCode": "def hash(password: str):\n    return pwd_context.hash(password)\ndef verify(plain_password, hashed_password):\n    return pwd_context.verify(plain_password,hashed_password)",
+        "detail": "app.utils",
+        "documentation": {}
+    },
+    {
+        "label": "verify",
+        "kind": 2,
+        "importPath": "app.utils",
+        "description": "app.utils",
+        "peekOfCode": "def verify(plain_password, hashed_password):\n    return pwd_context.verify(plain_password,hashed_password)",
+        "detail": "app.utils",
         "documentation": {}
     }
 ]
