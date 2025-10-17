@@ -9,7 +9,7 @@ from .. import schemas, models
 from sqlalchemy.orm import Session
 from ..database import engine, get_db
 from sqlalchemy import func
-
+from .. import oauth2
 
 def del_file(path):
     pathlib.Path(path).unlink(missing_ok=False)
@@ -28,7 +28,8 @@ IMAGEDIR_PROC = "images_processed/"
 async def idetect(title: str | None = Form(None),
                 published: bool = Form(True),
                 file: UploadFile= File(...),
-                db:  Session= Depends(get_db)):
+                db:  Session= Depends(get_db),
+                current_user: int = Depends(oauth2.get_current_user)):
     
     print(title)
     file.filename = f"{uuid.uuid4()}.jpg"
@@ -70,7 +71,8 @@ async def readall_image_file():
 
 @router.get("/{id}")
 async def read_one_image_file(id: int,
-        db:  Session= Depends(get_db)):
+        db:  Session= Depends(get_db),
+        current_user: int = Depends(oauth2.get_current_user)):
     post_query = db.query(models.Post).filter(models.Post.id == id)
     post=post_query.first() 
     if post==None:
@@ -85,7 +87,8 @@ async def read_one_image_file(id: int,
 @router.delete("/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int,
                 background_tasks: BackgroundTasks,
-                db:  Session= Depends(get_db)):
+                db:  Session= Depends(get_db),
+                current_user: int = Depends(oauth2.get_current_user)):
     post_query = db.query(models.Post).filter(models.Post.id == id)
     post=post_query.first() 
     if post is None:

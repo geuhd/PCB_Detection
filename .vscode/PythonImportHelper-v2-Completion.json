@@ -1,5 +1,45 @@
 [
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -208,6 +248,110 @@
         "documentation": {}
     },
     {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth2PasswordRequestForm",
+        "importPath": "fastapi.security.oauth2",
+        "description": "fastapi.security.oauth2",
+        "isExtraImport": true,
+        "detail": "fastapi.security.oauth2",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "importPath": "app.database",
+        "description": "app.database",
+        "isExtraImport": true,
+        "detail": "app.database",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "importPath": "app.oauth2",
+        "description": "app.oauth2",
+        "isExtraImport": true,
+        "detail": "app.oauth2",
+        "documentation": {}
+    },
+    {
         "label": "randint",
         "importPath": "random",
         "description": "random",
@@ -288,46 +432,6 @@
         "importPath": "uuid",
         "description": "uuid",
         "detail": "uuid",
-        "documentation": {}
-    },
-    {
-        "label": "Session",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "Session",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "Session",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "sessionmaker",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
-        "documentation": {}
-    },
-    {
-        "label": "relationship",
-        "importPath": "sqlalchemy.orm",
-        "description": "sqlalchemy.orm",
-        "isExtraImport": true,
-        "detail": "sqlalchemy.orm",
         "documentation": {}
     },
     {
@@ -445,6 +549,46 @@
         "documentation": {}
     },
     {
+        "label": "AsyncIOScheduler",
+        "importPath": "apscheduler.schedulers.asyncio",
+        "description": "apscheduler.schedulers.asyncio",
+        "isExtraImport": true,
+        "detail": "apscheduler.schedulers.asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncIOScheduler",
+        "importPath": "apscheduler.schedulers.asyncio",
+        "description": "apscheduler.schedulers.asyncio",
+        "isExtraImport": true,
+        "detail": "apscheduler.schedulers.asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "utc",
+        "importPath": "pytz",
+        "description": "pytz",
+        "isExtraImport": true,
+        "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "utc",
+        "importPath": "pytz",
+        "description": "pytz",
+        "isExtraImport": true,
+        "detail": "pytz",
+        "documentation": {}
+    },
+    {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
         "label": "TIMESTAMP",
         "importPath": "sqlalchemy.sql.sqltypes",
         "description": "sqlalchemy.sql.sqltypes",
@@ -458,6 +602,62 @@
         "description": "sqlalchemy.sql.expression",
         "isExtraImport": true,
         "detail": "sqlalchemy.sql.expression",
+        "documentation": {}
+    },
+    {
+        "label": "JWTError",
+        "importPath": "jose",
+        "description": "jose",
+        "isExtraImport": true,
+        "detail": "jose",
+        "documentation": {}
+    },
+    {
+        "label": "jwt",
+        "importPath": "jose",
+        "description": "jose",
+        "isExtraImport": true,
+        "detail": "jose",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "OAuth2PasswordBearer",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
+        "isExtraImport": true,
+        "detail": "fastapi.security",
         "documentation": {}
     },
     {
@@ -477,19 +677,20 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
         "label": "CryptContext",
         "importPath": "passlib.context",
         "description": "passlib.context",
         "isExtraImport": true,
         "detail": "passlib.context",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app.routers.auth",
+        "description": "app.routers.auth",
+        "peekOfCode": "def login(user_credentials: OAuth2PasswordRequestForm=Depends(), db: Session=Depends(database.get_db)):\n    user= db.query(models.User).filter(models.User.email==user_credentials.username).first()\n    if not user: \n        raise HTTPException(status_code= status.HTTP_403_FORBIDDEN,detail=\"Invalid Credentials\")\n    if not utils.verify(user_credentials.password,user.password):\n        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=\"Invalid Credentials\")\n    #create token \n    #return token\n    access_token =oauth2.create_access_token(data={\"user_id\" : user.id})\n    return {\"access_token\" : access_token, \"token_type\": \"bearer\"}",
+        "detail": "app.routers.auth",
         "documentation": {}
     },
     {
@@ -506,7 +707,7 @@
         "kind": 2,
         "importPath": "app.routers.detections",
         "description": "app.routers.detections",
-        "peekOfCode": "def delete_post(id: int,\n                background_tasks: BackgroundTasks,\n                db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    path=post.path\n    print(path)",
+        "peekOfCode": "def delete_post(id: int,\n                background_tasks: BackgroundTasks,\n                db:  Session= Depends(get_db),\n                current_user: int = Depends(oauth2.get_current_user)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    path=post.path",
         "detail": "app.routers.detections",
         "documentation": {}
     },
@@ -524,7 +725,7 @@
         "kind": 5,
         "importPath": "app.routers.detections",
         "description": "app.routers.detections",
-        "peekOfCode": "IMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()",
+        "peekOfCode": "IMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db),\n                current_user: int = Depends(oauth2.get_current_user)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"",
         "detail": "app.routers.detections",
         "documentation": {}
     },
@@ -533,8 +734,17 @@
         "kind": 5,
         "importPath": "app.routers.detections",
         "description": "app.routers.detections",
-        "peekOfCode": "IMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()\n    #save file",
+        "peekOfCode": "IMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)\nasync def idetect(title: str | None = Form(None),\n                published: bool = Form(True),\n                file: UploadFile= File(...),\n                db:  Session= Depends(get_db),\n                current_user: int = Depends(oauth2.get_current_user)):\n    print(title)\n    file.filename = f\"{uuid.uuid4()}.jpg\"\n    contents = await file.read()",
         "detail": "app.routers.detections",
+        "documentation": {}
+    },
+    {
+        "label": "restore_detect",
+        "kind": 2,
+        "importPath": "app.routers.restore",
+        "description": "app.routers.restore",
+        "peekOfCode": "def restore_detect(id: int,\n        db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    post.deleted= False\n    post.deleted_at= None\n    db.commit()",
+        "detail": "app.routers.restore",
         "documentation": {}
     },
     {
@@ -542,7 +752,7 @@
         "kind": 5,
         "importPath": "app.routers.restore",
         "description": "app.routers.restore",
-        "peekOfCode": "router = APIRouter(\n    prefix=\"/restore\",\n    tags=['restore']\n)",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/restore\",\n    tags=['restore']\n)\n@router.post(\"/{id}\")\ndef restore_detect(id: int,\n        db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:",
         "detail": "app.routers.restore",
         "documentation": {}
     },
@@ -641,7 +851,16 @@
         "kind": 2,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}",
+        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', minutes=1)\nasync def purge():\n    print(\"deleted values over 30 days\")",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "scheduler",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "scheduler = AsyncIOScheduler(timezone=utc)\n@asynccontextmanager\nasync def lifespan(app: FastAPI):\n    scheduler.start()\n    yield\n    scheduler.shutdown()\napp = FastAPI(lifespan=lifespan)\napp.include_router(auth.router)\napp.include_router(detections.router)\napp.include_router(users.router)",
         "detail": "app.main",
         "documentation": {}
     },
@@ -650,7 +869,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI()\napp.include_router(detections.router)\napp.include_router(users.router)\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}",
+        "peekOfCode": "app = FastAPI(lifespan=lifespan)\napp.include_router(auth.router)\napp.include_router(detections.router)\napp.include_router(users.router)\napp.include_router(restore.router)\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', minutes=1)\nasync def purge():",
         "detail": "app.main",
         "documentation": {}
     },
@@ -659,7 +878,7 @@
         "kind": 6,
         "importPath": "app.models",
         "description": "app.models",
-        "peekOfCode": "class Post(Base):\n    __tablename__ = \"pcbimg\"\n    id = Column(Integer, primary_key=True, nullable= False)\n    title= Column(String,nullable=False)\n    path_original = Column(String,nullable=False)\n    path = Column(String,nullable=False)\n    published =Column(Boolean,server_default='True',nullable=False)\n    created_at = Column(TIMESTAMP(timezone= True),nullable=False,server_default=text('now()'))\nclass User(Base):\n    __tablename__ =\"users\"",
+        "peekOfCode": "class Post(Base):\n    __tablename__ = \"pcbimg\"\n    id = Column(Integer, primary_key=True, nullable= False)\n    title= Column(String,nullable=False)\n    path_original = Column(String,nullable=False)\n    path = Column(String,nullable=False)\n    published =Column(Boolean,server_default='True',nullable=False)\n    created_at = Column(TIMESTAMP(timezone= True),nullable=False,server_default=text('now()'))\n    deleted=Column(Boolean,server_default='False',nullable=True)\n    deleted_at = Column(TIMESTAMP(timezone= True),nullable=True)",
         "detail": "app.models",
         "documentation": {}
     },
@@ -670,6 +889,33 @@
         "description": "app.models",
         "peekOfCode": "class User(Base):\n    __tablename__ =\"users\"\n    id = Column(Integer, primary_key=True, nullable= False)\n    email = Column(String,nullable=False,unique=True)\n    password =Column(String,nullable=False)  \n    created_at = Column(TIMESTAMP(timezone= True),nullable=False,server_default=text('now()'))  \n    phone_number = Column(String)",
         "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "create_access_token",
+        "kind": 2,
+        "importPath": "app.oauth2",
+        "description": "app.oauth2",
+        "peekOfCode": "def create_access_token(data: dict):\n    to_encode= data.copy()\n    expire = datetime.utcnow()+timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)\n    print(datetime.utcnow())\n    print(expire)\n    to_encode.update({\"exp\": expire})\n    encoded_jwt =jwt.encode(to_encode, SECRET_KEY,algorithm=ALGORITHM)\n    return encoded_jwt\ndef verify_access_token(token: str, credentials_exception):\n    try:",
+        "detail": "app.oauth2",
+        "documentation": {}
+    },
+    {
+        "label": "verify_access_token",
+        "kind": 2,
+        "importPath": "app.oauth2",
+        "description": "app.oauth2",
+        "peekOfCode": "def verify_access_token(token: str, credentials_exception):\n    try:\n        payload= jwt.decode(token,SECRET_KEY,algorithms=ALGORITHM)\n        id: str = payload.get(\"user_id\")\n        if id is None:\n            return credentials_exception\n        token_data = schemas.TokenData(id=str(id))\n    except JWTError:\n        raise credentials_exception  \n    return token_data  ",
+        "detail": "app.oauth2",
+        "documentation": {}
+    },
+    {
+        "label": "get_current_user",
+        "kind": 2,
+        "importPath": "app.oauth2",
+        "description": "app.oauth2",
+        "peekOfCode": "def get_current_user(token: str= Depends(oauth2_scheme), db: Session = Depends(database.get_db)):\n    credentials_exception = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,\n                                          detail= f\"could not validate credentils\",\n                                          headers={\"WWW-Authenticate\": \"Bearer\"})\n    token = verify_access_token(token,credentials_exception)\n    user = db.query(models.User).filter(models.User.id == token.id).first()\n    return user",
+        "detail": "app.oauth2",
         "documentation": {}
     },
     {

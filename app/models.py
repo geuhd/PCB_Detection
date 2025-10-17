@@ -13,6 +13,8 @@ class Post(Base):
     path = Column(String,nullable=False)
     published =Column(Boolean,server_default='True',nullable=False)
     created_at = Column(TIMESTAMP(timezone= True),nullable=False,server_default=text('now()'))
+    deleted=Column(Boolean,server_default='False',nullable=True)
+    deleted_at = Column(TIMESTAMP(timezone= True),nullable=True)
 
 class User(Base):
     __tablename__ ="users"
