@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 from ..database import engine, get_db
 from sqlalchemy import func
 from .. import oauth2
+from datetime import datetime
 
 def del_file(path):
     pathlib.Path(path).unlink(missing_ok=False)
@@ -94,11 +95,14 @@ def delete_post(id: int,
     if post is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} does not exist")
-    path=post.path
-    print(path)
-
-    background_tasks.add_task(del_file,post.path_original)
-    post_query.delete(synchronize_session=False)
+    
+    post.deleted= True
+    post.deleted_at= datetime.utcnow()
     db.commit()
-    background_tasks.add_task(del_file,path)
+    #path=post.path
+    #print(path)
+    #background_tasks.add_task(del_file,post.path_original)
+    #post_query.delete(synchronize_session=False)
+    #db.commit()
+    #background_tasks.add_task(del_file,path)
     return Response(status_code=status.HTTP_204_NO_CONTENT)

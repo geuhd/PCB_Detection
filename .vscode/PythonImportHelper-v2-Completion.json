@@ -256,6 +256,14 @@
         "documentation": {}
     },
     {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "status",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -313,6 +321,14 @@
     },
     {
         "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
         "importPath": "sqlalchemy.orm",
         "description": "sqlalchemy.orm",
         "isExtraImport": true,
@@ -499,6 +515,70 @@
         "documentation": {}
     },
     {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
         "label": "BaseSettings",
         "importPath": "pydantic_settings",
         "description": "pydantic_settings",
@@ -557,22 +637,6 @@
         "documentation": {}
     },
     {
-        "label": "AsyncIOScheduler",
-        "importPath": "apscheduler.schedulers.asyncio",
-        "description": "apscheduler.schedulers.asyncio",
-        "isExtraImport": true,
-        "detail": "apscheduler.schedulers.asyncio",
-        "documentation": {}
-    },
-    {
-        "label": "utc",
-        "importPath": "pytz",
-        "description": "pytz",
-        "isExtraImport": true,
-        "detail": "pytz",
-        "documentation": {}
-    },
-    {
         "label": "utc",
         "importPath": "pytz",
         "description": "pytz",
@@ -618,38 +682,6 @@
         "description": "jose",
         "isExtraImport": true,
         "detail": "jose",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timezone",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -707,7 +739,7 @@
         "kind": 2,
         "importPath": "app.routers.detections",
         "description": "app.routers.detections",
-        "peekOfCode": "def delete_post(id: int,\n                background_tasks: BackgroundTasks,\n                db:  Session= Depends(get_db),\n                current_user: int = Depends(oauth2.get_current_user)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    path=post.path",
+        "peekOfCode": "def delete_post(id: int,\n                background_tasks: BackgroundTasks,\n                db:  Session= Depends(get_db),\n                current_user: int = Depends(oauth2.get_current_user)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    post.deleted= True",
         "detail": "app.routers.detections",
         "documentation": {}
     },
@@ -851,7 +883,7 @@
         "kind": 2,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', minutes=1)\nasync def purge():\n    print(\"deleted values over 30 days\")",
+        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', days=1)\nasync def purge():\n    #Cant use the Depends session in a function that does not have Fast API decorator... \n    # Git hub thread \"https://github.com/fastapi/fastapi/issues/1693#issuecomment-665833384\" used for clarification\n    db = SessionLocal()\n    try:\n        yield db\n    finally:",
         "detail": "app.main",
         "documentation": {}
     },
@@ -869,7 +901,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI(lifespan=lifespan)\napp.include_router(auth.router)\napp.include_router(detections.router)\napp.include_router(users.router)\napp.include_router(restore.router)\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', minutes=1)\nasync def purge():",
+        "peekOfCode": "app = FastAPI(lifespan=lifespan)\napp.include_router(auth.router)\napp.include_router(detections.router)\napp.include_router(users.router)\napp.include_router(restore.router)\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', days=1)\nasync def purge():",
         "detail": "app.main",
         "documentation": {}
     },
@@ -1008,7 +1040,7 @@
         "kind": 2,
         "importPath": "app.utils",
         "description": "app.utils",
-        "peekOfCode": "def hash(password: str):\n    return pwd_context.hash(password)\ndef verify(plain_password, hashed_password):\n    return pwd_context.verify(plain_password,hashed_password)",
+        "peekOfCode": "def hash(password: str):\n    return pwd_context.hash(password)\ndef verify(plain_password, hashed_password):\n    return pwd_context.verify(plain_password,hashed_password)\ndef del_file(path):\n    pathlib.Path(path).unlink(missing_ok=False)\n    print(\"file delected\")",
         "detail": "app.utils",
         "documentation": {}
     },
@@ -1017,7 +1049,16 @@
         "kind": 2,
         "importPath": "app.utils",
         "description": "app.utils",
-        "peekOfCode": "def verify(plain_password, hashed_password):\n    return pwd_context.verify(plain_password,hashed_password)",
+        "peekOfCode": "def verify(plain_password, hashed_password):\n    return pwd_context.verify(plain_password,hashed_password)\ndef del_file(path):\n    pathlib.Path(path).unlink(missing_ok=False)\n    print(\"file delected\")",
+        "detail": "app.utils",
+        "documentation": {}
+    },
+    {
+        "label": "del_file",
+        "kind": 2,
+        "importPath": "app.utils",
+        "description": "app.utils",
+        "peekOfCode": "def del_file(path):\n    pathlib.Path(path).unlink(missing_ok=False)\n    print(\"file delected\")",
         "detail": "app.utils",
         "documentation": {}
     }

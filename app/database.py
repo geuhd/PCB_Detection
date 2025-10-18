@@ -6,8 +6,7 @@ from psycopg2.extras import RealDictCursor
 import time 
 from urllib.parse import urlparse
 from .config import settings
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from pytz import utc
+
 
 
 SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
