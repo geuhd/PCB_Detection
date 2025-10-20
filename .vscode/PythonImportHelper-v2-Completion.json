@@ -112,14 +112,6 @@
         "documentation": {}
     },
     {
-        "label": "BackgroundTasks",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -400,21 +392,19 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "detail": "typing",
         "documentation": {}
     },
     {
-        "label": "pathlib",
-        "kind": 6,
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "detail": "pathlib",
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -451,11 +441,76 @@
         "documentation": {}
     },
     {
-        "label": "func",
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
         "isExtraImport": true,
-        "detail": "sqlalchemy",
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
         "documentation": {}
     },
     {
@@ -515,70 +570,6 @@
         "documentation": {}
     },
     {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timezone",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timezone",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
         "label": "BaseSettings",
         "importPath": "pydantic_settings",
         "description": "pydantic_settings",
@@ -626,6 +617,14 @@
         "description": "urllib.parse",
         "isExtraImport": true,
         "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
         "documentation": {}
     },
     {
@@ -709,6 +708,15 @@
         "documentation": {}
     },
     {
+        "label": "pathlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
         "label": "CryptContext",
         "importPath": "passlib.context",
         "description": "passlib.context",
@@ -726,20 +734,11 @@
         "documentation": {}
     },
     {
-        "label": "del_file",
-        "kind": 2,
-        "importPath": "app.routers.detections",
-        "description": "app.routers.detections",
-        "peekOfCode": "def del_file(path):\n    pathlib.Path(path).unlink(missing_ok=False)\n    print(\"file delected\")\nrouter = APIRouter(\n    prefix=\"/detections\",\n    tags=['Detections']\n)\nIMAGEDIR = \"images/\"\nIMAGEDIR_PROC = \"images_processed/\"\n@router.post(\"/\", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)",
-        "detail": "app.routers.detections",
-        "documentation": {}
-    },
-    {
         "label": "delete_post",
         "kind": 2,
         "importPath": "app.routers.detections",
         "description": "app.routers.detections",
-        "peekOfCode": "def delete_post(id: int,\n                background_tasks: BackgroundTasks,\n                db:  Session= Depends(get_db),\n                current_user: int = Depends(oauth2.get_current_user)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    post.deleted= True",
+        "peekOfCode": "def delete_post(id: int,\n                db:  Session= Depends(get_db),\n                current_user: int = Depends(oauth2.get_current_user)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    if post.owner_id != current_user.id:\n        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,",
         "detail": "app.routers.detections",
         "documentation": {}
     },
@@ -775,7 +774,7 @@
         "kind": 2,
         "importPath": "app.routers.restore",
         "description": "app.routers.restore",
-        "peekOfCode": "def restore_detect(id: int,\n        db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    post.deleted= False\n    post.deleted_at= None\n    db.commit()",
+        "peekOfCode": "def restore_detect(id: int,\n        db:  Session= Depends(get_db),\n        current_user: int = Depends(oauth2.get_current_user)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:\n        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, \n                            detail=f\"post with id: {id} does not exist\")\n    if (post.owner_id != current_user.id) & (post.published == False):\n        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,",
         "detail": "app.routers.restore",
         "documentation": {}
     },
@@ -784,7 +783,7 @@
         "kind": 5,
         "importPath": "app.routers.restore",
         "description": "app.routers.restore",
-        "peekOfCode": "router = APIRouter(\n    prefix=\"/restore\",\n    tags=['restore']\n)\n@router.post(\"/{id}\")\ndef restore_detect(id: int,\n        db:  Session= Depends(get_db)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() \n    if post is None:",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/restore\",\n    tags=['restore']\n)\n@router.post(\"/{id}\")\ndef restore_detect(id: int,\n        db:  Session= Depends(get_db),\n        current_user: int = Depends(oauth2.get_current_user)):\n    post_query = db.query(models.Post).filter(models.Post.id == id)\n    post=post_query.first() ",
         "detail": "app.routers.restore",
         "documentation": {}
     },
@@ -883,7 +882,7 @@
         "kind": 2,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', days=1)\nasync def purge():\n    #Cant use the Depends session in a function that does not have Fast API decorator... \n    # Git hub thread \"https://github.com/fastapi/fastapi/issues/1693#issuecomment-665833384\" used for clarification\n    db = SessionLocal()\n    try:\n        yield db\n    finally:",
+        "peekOfCode": "def root():\n    return {\"message\": \"PCB DETECTION API\"}\napp.mount(\"/images\", StaticFiles(directory=\"images\"),name=\"images\")\napp.mount(\"/images_processed\", StaticFiles(directory=\"images_processed\"),name=\"images_processed\")\n@scheduler.scheduled_job('interval', days=1)\nasync def purge():\n    #Cant use the Depends session in a function that does not have Fast API decorator... \n    # Git hub thread \"https://github.com/fastapi/fastapi/issues/1693#issuecomment-665833384\" used for clarification\n    db = SessionLocal()\n    try:",
         "detail": "app.main",
         "documentation": {}
     },
@@ -901,7 +900,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI(lifespan=lifespan)\napp.include_router(auth.router)\napp.include_router(detections.router)\napp.include_router(users.router)\napp.include_router(restore.router)\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\n@scheduler.scheduled_job('interval', days=1)\nasync def purge():",
+        "peekOfCode": "app = FastAPI(lifespan=lifespan)\napp.include_router(auth.router)\napp.include_router(detections.router)\napp.include_router(users.router)\napp.include_router(restore.router)\n@app.get(\"/\")\ndef root():\n    return {\"message\": \"PCB DETECTION API\"}\napp.mount(\"/images\", StaticFiles(directory=\"images\"),name=\"images\")\napp.mount(\"/images_processed\", StaticFiles(directory=\"images_processed\"),name=\"images_processed\")",
         "detail": "app.main",
         "documentation": {}
     },

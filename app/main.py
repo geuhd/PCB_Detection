@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends
+from fastapi.staticfiles import StaticFiles
 from . import models
 from .database import engine, SessionLocal
 from .routers import detections, users, auth, restore
@@ -8,6 +9,7 @@ from contextlib import asynccontextmanager
 from sqlalchemy.orm import Session
 from datetime import datetime, timezone , timedelta
 from .utils import del_file
+
 
 
 models.Base.metadata.create_all(bind=engine)
@@ -31,6 +33,9 @@ app.include_router(restore.router)
 @app.get("/")
 def root():
     return {"message": "PCB DETECTION API"}
+
+app.mount("/images", StaticFiles(directory="images"),name="images")
+app.mount("/images_processed", StaticFiles(directory="images_processed"),name="images_processed")
 
 
 @scheduler.scheduled_job('interval', days=1)

@@ -1,20 +1,17 @@
-from fastapi import FastAPI, File, UploadFile, Form,Response, status, HTTPException,Depends,APIRouter, BackgroundTasks
+from fastapi import FastAPI, File, UploadFile, Form,Response, status, HTTPException,Depends,APIRouter
+
 from random import randint
 from fastapi.responses import FileResponse
-import os
-import pathlib
-from typing import Union
+from typing import List, Optional,Union
 import uuid
 from .. import schemas, models
 from sqlalchemy.orm import Session
 from ..database import engine, get_db
-from sqlalchemy import func
 from .. import oauth2
 from datetime import datetime
 
-def del_file(path):
-    pathlib.Path(path).unlink(missing_ok=False)
-    print("file delected")
+
+
         
 router = APIRouter(
     prefix="/detections",
@@ -52,7 +49,8 @@ async def idetect(title: str | None = Form(None),
         title=title or file.filename,
         path_original= f"{IMAGEDIR}{file.filename}",                           
         path=path,
-        published=published,        
+        published=published, 
+        owner_id=current_user.id       
     )
     db.add(new_post)
     db.commit()
@@ -60,15 +58,33 @@ async def idetect(title: str | None = Form(None),
     return new_post
 
 @router.get("/")
-async def readall_image_file():
-
-    #get image file
-    files =os.listdir(IMAGEDIR_PROC)
-
-    path = 1
+async def get_all(db:  Session= Depends(get_db),
+                    user_id:int=Depends(oauth2.get_current_user),
+                    limit:int =10,
+                    skip:int =0,
+                    search: Optional[str]=""):
+    print(user_id)
+    posts1 = db.query(models.Post).group_by(models.Post.id).filter(models.Post.title.contains(search),
+                                                                  models.Post.owner_id==user_id.id).limit(limit).offset(skip).all()
+    posts2 = db.query(models.Post).group_by(models.Post.id).filter(models.Post.title.contains(search),
+                                                                  models.Post.published==True).limit(limit).offset(skip).all()
     
+    posts=posts1 +posts2
+    
+    return [{"post": post} for post in posts]
 
-    return FileResponse(path)
+@router.get("/mine")
+async def get_mine(db:  Session= Depends(get_db),
+                    user_id:int=Depends(oauth2.get_current_user),
+                    limit:int =10,
+                    skip:int =0,
+                    search: Optional[str]=""):
+    print(user_id)
+    posts = db.query(models.Post).group_by(models.Post.id).filter(models.Post.title.contains(search),
+                                                                  models.Post.owner_id==user_id.id).limit(limit).offset(skip).all()
+
+    
+    return [{"post": post} for post in posts]
 
 @router.get("/{id}")
 async def read_one_image_file(id: int,
@@ -79,6 +95,10 @@ async def read_one_image_file(id: int,
     if post==None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} was not found")
+    
+    if (post.owner_id != current_user.id) & (post.published == False):
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail="Not authorised to perform action")
     print(post)
 
     return post
@@ -87,7 +107,6 @@ async def read_one_image_file(id: int,
 #anyone can delete for now. 
 @router.delete("/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int,
-                background_tasks: BackgroundTasks,
                 db:  Session= Depends(get_db),
                 current_user: int = Depends(oauth2.get_current_user)):
     post_query = db.query(models.Post).filter(models.Post.id == id)
@@ -95,6 +114,10 @@ def delete_post(id: int,
     if post is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f"post with id: {id} does not exist")
+    
+    if post.owner_id != current_user.id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
+                            detail="Not authorised to perform action")
     
     post.deleted= True
     post.deleted_at= datetime.utcnow()
@@ -106,3 +129,4 @@ def delete_post(id: int,
     #db.commit()
     #background_tasks.add_task(del_file,path)
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
