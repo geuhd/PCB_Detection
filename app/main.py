@@ -1,5 +1,6 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends,Request
 from fastapi.staticfiles import StaticFiles
+from starlette.middleware.base import BaseHTTPMiddleware
 from . import models
 from .database import engine, SessionLocal
 from .routers import detections, users, auth, restore
@@ -10,7 +11,15 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timezone , timedelta
 from .utils import del_file
 
+# 1 GB max, adjust as needed
+MAX_UPLOAD_SIZE = 1024 * 1024 * 5 # 100 MB example
 
+class LimitUploadSizeMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        if int(request.headers.get("content-length", 0)) > MAX_UPLOAD_SIZE:
+            from fastapi.responses import PlainTextResponse
+            return PlainTextResponse("File too large", status_code=413)
+        return await call_next(request)
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -24,7 +33,7 @@ async def lifespan(app: FastAPI):
     scheduler.shutdown()
 
 app = FastAPI(lifespan=lifespan)
-
+app.add_middleware(LimitUploadSizeMiddleware)
 app.include_router(auth.router)
 app.include_router(detections.router)
 app.include_router(users.router)

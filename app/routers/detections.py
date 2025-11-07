@@ -1,4 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, Form,Response, status, HTTPException,Depends,APIRouter
+from app.yolo_models import machine_models
+
 
 from random import randint
 from fastapi.responses import FileResponse
@@ -9,6 +11,10 @@ from sqlalchemy.orm import Session
 from ..database import engine, get_db
 from .. import oauth2
 from datetime import datetime
+
+import shutil # <-- New Import: Used for efficient file copying/streaming
+import os     # <-- New Import: Used for directory creation
+import aiofiles #
 
 
 
@@ -22,35 +28,75 @@ IMAGEDIR = "images/"
 IMAGEDIR_PROC = "images_processed/"
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model = schemas.DetectCreate)
-async def idetect(title: str | None = Form(None),
-                published: bool = Form(True),
-                file: UploadFile= File(...),
-                db:  Session= Depends(get_db),
-                current_user: int = Depends(oauth2.get_current_user)):
-    
+
+
+
+
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.DetectCreate)
+async def idetect(
+    title: str | None = Form(None),
+    published: bool = Form(True),
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db),
+    current_user: int = Depends(oauth2.get_current_user)
+):
     print(title)
-    file.filename = f"{uuid.uuid4()}.jpg"
-    contents = await file.read()
+    
+    # 1. Generate new filename and paths
+    new_filename = f"{uuid.uuid4()}.jpg"
+    original_path = f"{IMAGEDIR}{new_filename}"
+    processed_path = f"{IMAGEDIR_PROC}{new_filename}"
+    
+    # Define chunk size for streaming (e.g., 1MB)
+    CHUNK_SIZE = 512 * 512 
 
-    #save file
-    with open(f"{IMAGEDIR}{file.filename}", "wb") as f:
-        f.write(contents)
+    # 2. ASYNCHRONOUSLY STREAM THE FILE TO ITS ORIGINAL LOCATION (FIX)
+    # This uses aiofiles and the native UploadFile stream for proper async I/O.
+    try:
+        # aiofiles.open ensures file writing is non-blocking
+        async with aiofiles.open(original_path, "wb") as buffer:
+            # Read from the UploadFile stream chunk by chunk
+            while True:
+                chunk = await file.read(CHUNK_SIZE)
+                if not chunk:
+                    break
+                await buffer.write(chunk)
+    except Exception as e:
+        print(f"Error during asynchronous file streaming: {e}")
+        # Re-raise as an HTTP Exception
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to save uploaded file due to streaming error."
+        )
+    finally:
+        # The stream should be closed by the framework/context manager, 
+        # but it is safe to keep this here if needed.
+        # Removing explicit close if we switch to an async context manager, but since we are
+        # using file.read() outside of a context manager, we must ensure it closes.
+        await file.close()
 
 
-    #get image file
-    with open(f"{IMAGEDIR_PROC}{file.filename}", "wb") as f:
-        f.write(contents)
+    # 3. COPY THE SAVED FILE TO THE PROCESSED LOCATION
+    # We still use shutil.copy2 since the file is now saved on disk.
+    try:
+        shutil.copy2(original_path,processed_path)
+        # = machine_models.get_detect(original_path)
+    except Exception as e:
+        print(f"Error copying file for processing: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to create processed copy of the file."
+        )
+    #processed_path=machine_models.get_detect(original_path,processed_path)
 
-    path = f"{IMAGEDIR_PROC}{file.filename}"
 
-
+    # 4. Save to Database (Rest of your original logic)
     new_post = models.Post(
         title=title or file.filename,
-        path_original= f"{IMAGEDIR}{file.filename}",                           
-        path=path,
+        path_original=original_path,                         
+        path=processed_path,
         published=published, 
-        owner_id=current_user.id       
+        owner_id=current_user.id      
     )
     db.add(new_post)
     db.commit()
