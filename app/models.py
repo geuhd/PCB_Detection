@@ -17,6 +17,7 @@ class Post(Base):
     deleted_at = Column(TIMESTAMP(timezone= True),nullable=True)
 
     owner_id = Column(Integer,ForeignKey("users.id", ondelete="CASCADE") , nullable= False)
+    model_name = Column(String, nullable=True)
     owner = relationship("User")
     
 class User(Base):

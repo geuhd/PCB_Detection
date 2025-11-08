@@ -1,107 +1,109 @@
-from fastapi import FastAPI, File, UploadFile, Form,Response, status, HTTPException,Depends,APIRouter
-from app.yolo_models import machine_models
-
-
-from random import randint
-from fastapi.responses import FileResponse
-from typing import List, Optional,Union
-import uuid
-from .. import schemas, models
+from fastapi import APIRouter, UploadFile, File, Form, Depends, HTTPException, status
+from fastapi.concurrency import run_in_threadpool
 from sqlalchemy.orm import Session
-from ..database import engine, get_db
-from .. import oauth2
-from datetime import datetime
-
-import shutil # <-- New Import: Used for efficient file copying/streaming
-import os     # <-- New Import: Used for directory creation
-import aiofiles #
-
-
-
-        
-router = APIRouter(
-    prefix="/detections",
-    tags=['Detections']
-)
-
-IMAGEDIR = "images/"
-IMAGEDIR_PROC = "images_processed/"
+from app import models, schemas, oauth2
+from app.database import get_db
+from app.yolo.detector import run_yolo_detection
+import aiofiles
+import os
+import uuid
+from typing import Optional
 
 
+router = APIRouter(prefix="/detections", tags=["Detections"])
 
+import pathlib
 
+# Use absolute paths based on the project root (one level above "app")
+BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
+IMAGEDIR = str(BASE_DIR / "images")
+IMAGEDIR_PROC = str(BASE_DIR / "images_processed")
+
+# Make sure folders exist
+os.makedirs(IMAGEDIR, exist_ok=True)
+os.makedirs(IMAGEDIR_PROC, exist_ok=True)
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.DetectCreate)
 async def idetect(
     title: str | None = Form(None),
     published: bool = Form(True),
+    model_name: str = Form(..., description="YOLO model to use: v3, v8m, or v8n"),
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
-    current_user: int = Depends(oauth2.get_current_user)
+    current_user: int = Depends(oauth2.get_current_user),
 ):
-    print(title)
-    
-    # 1. Generate new filename and paths
-    new_filename = f"{uuid.uuid4()}.jpg"
-    original_path = f"{IMAGEDIR}{new_filename}"
-    processed_path = f"{IMAGEDIR_PROC}{new_filename}"
-    
-    # Define chunk size for streaming (e.g., 1MB)
-    CHUNK_SIZE = 512 * 512 
+    """
+    Upload image -> stream in chunks -> run YOLO detection -> 
+    save processed image -> store result in DB.
+    """
 
-    # 2. ASYNCHRONOUSLY STREAM THE FILE TO ITS ORIGINAL LOCATION (FIX)
-    # This uses aiofiles and the native UploadFile stream for proper async I/O.
+    print(f"⚙️ Running detection: Title={title}, Model={model_name}")
+
+    # 1️⃣ Generate unique filenames
+    new_filename = f"{uuid.uuid4()}.jpg"
+    original_path = os.path.join(IMAGEDIR, new_filename)
+    processed_path = os.path.join(IMAGEDIR_PROC, new_filename)
+
+    # 2️⃣ Stream file in chunks asynchronously
+    CHUNK_SIZE = 1024 * 1024  # 1MB per chunk
     try:
-        # aiofiles.open ensures file writing is non-blocking
         async with aiofiles.open(original_path, "wb") as buffer:
-            # Read from the UploadFile stream chunk by chunk
             while True:
                 chunk = await file.read(CHUNK_SIZE)
                 if not chunk:
                     break
                 await buffer.write(chunk)
     except Exception as e:
-        print(f"Error during asynchronous file streaming: {e}")
-        # Re-raise as an HTTP Exception
+        print(f"❌ File save error: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to save uploaded file due to streaming error."
         )
     finally:
-        # The stream should be closed by the framework/context manager, 
-        # but it is safe to keep this here if needed.
-        # Removing explicit close if we switch to an async context manager, but since we are
-        # using file.read() outside of a context manager, we must ensure it closes.
         await file.close()
 
-
-    # 3. COPY THE SAVED FILE TO THE PROCESSED LOCATION
-    # We still use shutil.copy2 since the file is now saved on disk.
+    # 3️⃣ Run YOLO detection (offloaded to threadpool)
     try:
-        shutil.copy2(original_path,processed_path)
-        # = machine_models.get_detect(original_path)
+        detection_result = await run_in_threadpool(
+            run_yolo_detection,
+            model_name=model_name,
+            original_image_path=original_path,
+            output_image_path=processed_path,
+        )
+
+        if not detection_result:
+            raise Exception(f"YOLO detection failed for model '{model_name}'")
+
+        print(f"✅ Detection complete for model: {model_name}")
+
     except Exception as e:
-        print(f"Error copying file for processing: {e}")
+        print(f"❌ YOLO processing error: {e}")
+        if os.path.exists(original_path):
+            os.remove(original_path)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to create processed copy of the file."
+            detail=f"Failed to process image: {e}"
         )
-    #processed_path=machine_models.get_detect(original_path,processed_path)
 
-
-    # 4. Save to Database (Rest of your original logic)
+    # 4️⃣ Save detection record in DB
     new_post = models.Post(
         title=title or file.filename,
-        path_original=original_path,                         
+        path_original=original_path,
         path=processed_path,
-        published=published, 
-        owner_id=current_user.id      
+        published=published,
+        owner_id=current_user.id,
+        model_name=model_name,  # optional if column added
     )
+
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
+
+    print(f"📦 Record saved for user {current_user.id}")
     return new_post
+
+
 
 @router.get("/")
 async def get_all(db:  Session= Depends(get_db),
