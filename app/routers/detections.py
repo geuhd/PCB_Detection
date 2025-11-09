@@ -16,8 +16,8 @@ import pathlib
 
 # Use absolute paths based on the project root (one level above "app")
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
-IMAGEDIR = str(BASE_DIR / "images")
-IMAGEDIR_PROC = str(BASE_DIR / "images_processed")
+IMAGEDIR = str("images")
+IMAGEDIR_PROC = str( "images_processed")
 
 # Make sure folders exist
 os.makedirs(IMAGEDIR, exist_ok=True)
